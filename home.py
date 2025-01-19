@@ -1,6 +1,13 @@
 import streamlit as st
+from streamlit_option_menu import option_menu 
 
 st.set_page_config(page_title="EatS", page_icon = ":material/fitness_center:")
+
+selected = option_menu(
+    menu_title = None,
+    options=["Home", "Food Tracker", "BMI Tracker", "Sleep Tracker"],
+    orientation="Horizontal",
+)
 
 #--------- PAGE SETUP ---------
 about_us = st.Page(
