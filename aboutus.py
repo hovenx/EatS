@@ -1,4 +1,5 @@
 import streamlit as st
+import random
 
 st.title("EatS: Tracking Your Food and Sleep")
 st.subheader("Home")
