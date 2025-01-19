@@ -4,8 +4,7 @@ import json
 import os
 import pandas as pd
 
-st.title("EatS")
-st.header("Food and Calorie Tracker")
+st.title("EatS' Food and Calorie Tracker")
 st.subheader("Welcome to EatS! Track your food and calories.")
 
 # Define the folder path
