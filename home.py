@@ -23,7 +23,7 @@ food_track = st.Page(
 )
 
 bmi_track = st.Page(
-    page="bmi/bmi.py",
+    page="maintenancebmi.py",
     title="BMI Tracker",
     icon=":material/scale:",
 )
