@@ -34,7 +34,7 @@ pg = st.navigation(
         "Information": [about_us],
         "Services": [food_track, sleep_track, bmi_track],
         orientation:"horizontal",
-        position="sidebar", expanded=True
+        position:="sidebar", expanded=True
     }
 )
 
