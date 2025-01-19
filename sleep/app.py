@@ -83,3 +83,6 @@ if target_hours or target_minutes:  # Proceed if either target is entered
         st.line_chart(df, x='date', y=f"{sleep_type.lower()}_hours") 
     else:
       st.write("No sleep data available.")
+
+st.page_link("food/food.py", label="Go to the Food Tracker", icon=":material/restaurant:")
+st.page_link("bmi.py", label="Go to the BMI Tracker", icon=":material/scale:")
