@@ -53,8 +53,8 @@ if st.button("Calculate BMI"):
             "category": bmi_category
         })
 
-        with open(data_file, "w") as f:
-            json.dump(data, f, indent=4)
+        with open(bmi_data, "w") as f:
+            json.dump(bmi_data, f, indent=4)
 
         st.write(f"Your BMI is: {bmi:.2f} ({bmi_category})")
         
@@ -77,8 +77,8 @@ if st.button("Calculate BMI"):
             st.write("Suggestions: Maintain a healthy lifestyle with balanced diet and regular exercise.")
 
         # Display weight progress
-        if len(data) > 1:
-            df = pd.DataFrame(data)
+        if len(bmi_data) > 1:
+            df = pd.DataFrame(bmi_data)
             st.line_chart(df, x="date", y="weight")
             st.write("Weight Progress")
     else:
@@ -93,4 +93,4 @@ if st.button("View BMI Logs"):
         df = pd.DataFrame(bmi_data)
         st.table(df)
     else:
-        st.write("No bmi data available.")
+        st.write("No BMI data available.")
