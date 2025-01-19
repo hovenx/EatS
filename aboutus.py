@@ -60,4 +60,4 @@ quotes_list = ("Matulog ka nang maaga, ‘wag ka magpupuyat magagalit ako >:(",
 "Are you hungry right now? How about we cook a very healthy meal while I hug you from the back :3",
 "Dinner at olive garden? I’ll pick you up by 8pm <33")
 
-st.write(random.choice(quotes_list))
+st.caption(random.choice(quotes_list))
