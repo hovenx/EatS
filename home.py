@@ -22,11 +22,17 @@ food_track = st.Page(
     icon=":material/restaurant:",
 )
 
+bmi_track = st.Page(
+    page="bmi/bmi.py",
+    title="BMI Tracker",
+    icon=":material/scale:",
+)
+
 #--------- NAVIGATION SETUP ---------
 pg = st.navigation(
     {
         "Information": [about_us],
-        "Services": [sleep_track, food_track],
+        "Services": [sleep_track, food_track, bmi_track],
     }
 )
 
