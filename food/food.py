@@ -50,3 +50,6 @@ if st.button("View Food Logs"):
         st.table(df)
     else:
         st.write("No food data available.")
+
+st.page_link("sleep/app.py", label="Go to the Sleep Tracker", icon=":material/bedtime:")
+st.page_link("bmi.py", label="Go to the BMI Tracker", icon=":material/scale:")
