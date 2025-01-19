@@ -1,49 +1,30 @@
-import streamlit as st
-import datetime
-import json
-import os
-import pandas as pd
+mport streamlit as st
 
-st.subheader("Welcome to EatS! Track your food and calories.")
-st.title("EatS' Food and Calorie Tracker")
+st.title("BMI Goal Helper")
 
-folder_path = "Stored Data"
-if not os.path.exists(folder_path):
-    os.makedirs(folder_path)
+current_bmi = st.number_input("Enter your current BMI:", min_value=0.0)
+goal_bmi = st.number_input("Enter your goal BMI:", min_value=0.0)
 
-try:
-    with open(os.path.join(folder_path, "bmi_data.json"), "r") as f:
-        bmi_data = json.load(f)
-except FileNotFoundError:
-    bmi_data = []
+if st.button("Get Suggestions"):
+    if current_bmi > goal_bmi:
+        st.subheader("Suggestions for Weight Loss:")
+        st.write("- *Increase physical activity:* Aim for at least 150 minutes of moderate-intensity or 75 minutes of vigorous-intensity aerobic exercise per week. Consider activities like brisk walking, jogging, swimming, cycling, or dancing.")
+        st.write("- *Follow a balanced diet:* Focus on whole, unprocessed foods, including fruits, vegetables, lean proteins, and whole grains. Limit processed foods, sugary drinks, and unhealthy fats.")
+        st.write("- *Strength training:* Incorporate strength training exercises 2-3 times per week to build muscle mass, which helps boost metabolism.")
+        st.write("- *Mindful eating:* Pay attention to your hunger and fullness cues, and avoid distractions while eating.")
+        st.write("- *Get enough sleep:* Aim for 7-9 hours of quality sleep per night.")
+        st.write("- *Consult a professional:* Consider consulting a doctor or a registered dietitian for personalized guidance.")
 
+    elif current_bmi < goal_bmi:
+        st.subheader("Suggestions for Weight Gain:")
+        st.write("- *Increase calorie intake:* Consume more calories than you burn. Focus on nutrient-rich foods that provide healthy calories.")
+        st.write("- *Strength training:* Lift weights regularly to build muscle mass.")
+        st.write("- *Eat frequently:* Consume smaller, more frequent meals throughout the day to help increase calorie intake.")
+        st.write("- *Include healthy fats:* Incorporate healthy fats, such as avocados, nuts, and seeds, into your diet.")
+        st.write("- *Consult a professional:* Consider consulting a doctor or a registered dietitian for personalized guidance.")
 
-today = datetime.date.today()
-formatted_today = today.strftime("%B %d, %Y")
-
-weight = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
-height = st.number_input("Enter your height (m):", min_value=0.0, step=0.01)
-
-
-if st.button("Calculate BMI"):
-    if weight > 0 and height > 0:
-        bmi = calculate_bmi(weight, height)
-        bmi_category = get_bmi_category(bmi)
-
-        # Store data
-        data.append({
-            "date": today,
-            "weight": weight,
-            "height": height,
-            "bmi": bmi,
-            "category": bmi_category
-        })
-
-        with open(data_file, "w") as f:
-            json.dump(data, f, indent=4)
-
-        st.write(f"Your BMI is: {bmi:.2f} ({bmi_category})")
-
+    else:
+        st.write("Your current BMI and goal BMI are the same. Maintain your healthy lifestyle!")
 
 if st.button("View BMI Logs"):
     st.write("BMI Logs:")
