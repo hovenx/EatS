@@ -29,12 +29,11 @@ bmi_track = st.Page(
 )
 
 #--------- NAVIGATION SETUP ---------
-pg = st.navigation(
+pg = st.navigation(orientation:"horizontal",
+        position="sidebar", expanded=True,
     {
         "Information": [about_us],
         "Services": [food_track, sleep_track, bmi_track],
-        orientation:"horizontal",
-        position="sidebar", expanded=True,
     }
 )
 
