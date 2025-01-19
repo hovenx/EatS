@@ -32,7 +32,7 @@ bmi_track = st.Page(
 pg = st.navigation(
     {
         "Information": [about_us],
-        "Services": [sleep_track, food_track, bmi_track],
+        "Services": [food_track, sleep_track, bmi_track],
     }
 )
 
