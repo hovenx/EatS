@@ -34,14 +34,14 @@ def get_bmi_category(bmi_data):
         return "Obese"
 
 
-weight = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
-height = st.number_input("Enter your height (m):", min_value=0.0, step=0.01)
+weight_kg = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
+height_m = st.number_input("Enter your height (m):", min_value=0.0, step=0.01)
 today = datetime.date.today().strftime("%Y-%m-%d")
 
 
 if st.button("Calculate BMI"):
     if weight > 0 and height > 0:
-        bmi = calculate_bmi(weight, height)
+        bmi = calculate_bmi(weight_kg, height_m)
         bmi_category = get_bmi_category(bmi)
 
         # Store data
