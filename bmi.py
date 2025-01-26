@@ -26,7 +26,7 @@ today = datetime.date.today().strftime("%Y-%m-%d")
 
 if st.button("Calculate BMI"):
     if weight > 0 and height > 0:
-        bmi = (weight / (height ** 2))
+        bmi = (weight / (height * 2))
         
         if bmi < 18.5:
             bmi_category = "Underweight"
