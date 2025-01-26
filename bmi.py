@@ -47,9 +47,9 @@ if st.button("Calculate BMI"):
         # Store data
         bmi_data.append({
             "date": today,
-            "weight": weight,
-            "height": height,
-            "bmi": bmi,
+            "weight": weight_kg,
+            "height": height_m,
+            "bmi": bmi_data,
             "category": bmi_category
         })
 
