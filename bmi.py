@@ -83,9 +83,9 @@ if st.button("Calculate BMI"):
         
         # Display weight progress
         if len(bmi_data) > 1:
-            df = pd.DataFrame(bmi_data)
-            st.line_chart(df, x="date", y="weight")
-            st.write("Weight Progress")
+            df = pd.DataFrame(bmi)
+            st.line_chart(df, x="date", y="bmi")
+            st.write("BMI Progress")
     else:
         st.write("Please enter valid weight and height.")
 
