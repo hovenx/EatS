@@ -57,9 +57,10 @@ if st.button("Calculate BMI"):
         
         with open(("bmi_data"), "w") as f:
             json.dump(bmi_data, f, indent=4)
-
-        st.write(f"Your BMI is: {bmi:.2f} ({bmi_category})")
+            
         st.success(f"Logged {bmi_data} for {today}")
+        st.write(f"Your BMI is: {bmi:.2f} ({bmi_category})")
+        
         
         # BMI Suggestions
         if bmi_category == "Underweight":
