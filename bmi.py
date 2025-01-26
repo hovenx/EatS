@@ -51,7 +51,7 @@ if st.button("Calculate BMI"):
         with open(("bmi_data"), "w") as f:
             json.dump(bmi_data, f, indent=4)
             
-        st.write(f"Your BMI is: {bmi:.2f} ({bmi_category})")
+        st.write(f"Your BMI is: {bmi}: {bmi_category}")
         
         
         # BMI Suggestions
@@ -74,7 +74,7 @@ if st.button("Calculate BMI"):
 
         st.success(f"Logged BMI for today")
         
-        # Display weight progress
+        # Display bmi progress
         if len(bmi_data) > 1:
             df = pd.DataFrame(bmi_data)
             st.line_chart(df, x="date", y="bmi")
