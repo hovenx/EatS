@@ -19,8 +19,8 @@ try:
 except FileNotFoundError:
     bmi_data = []
 
-def calculate_bmi(weight_kg, height_m):
-    return weight / (height ** 2)
+def calculate_bmi(weight, height):
+    return (weight / (height ** 2))
 
 
 def get_bmi_category(bmi):
