@@ -64,7 +64,7 @@ if st.button("Calculate BMI"):
             st.write("Consider increasing your calorie intake and consulting a doctor or nutritionist.")
             st.write("For extra calories, add extras to your meals, like nut butter on whole-grain bread or cheese in casseroles. For more calories and protein, you can also add liquid or dry milk to food. Soups and mashed potatoes are two examples.")
             st.write("Start eating five to six smaller meals throughout the day gradually. To identify when you might be hungry, try to pay attention to your body. Even if you're not really hungry, you might need to schedule mealtimes.")
-            st.wirte("Drinks have the power to fill you up. If it applies to you, refrain from drinking right before or during meals. However, be sure to consume adequate amounts of liquids throughout the day.")
+            st.write("Drinks have the power to fill you up. If it applies to you, refrain from drinking right before or during meals. However, be sure to consume adequate amounts of liquids throughout the day.")
             st.write("By increasing your muscle mass, exercise—especially strength training—can aid in weight growth. Additionally, exercise may increase your hunger.")
         elif bmi_category == "Overweight" or bmi_category == "Obese":
             st.write("Suggestions: ")
