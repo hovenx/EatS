@@ -1,50 +1,55 @@
 import streamlit as st
-import pandas as pd
+import datetime
+import json
 import os
+import pandas as pd
 
-# Initialize the dataframe if it doesn't exist
-if not os.path.exists("bmi_data.csv"):
-    df = pd.DataFrame(columns=["Date", "Weight (kg)", "Height (cm)", "BMI"])
-    df.to_csv("bmi_data.csv", index=False)
+st.title("EatS' Food and Calorie Tracker")
+st.subheader("Welcome to EatS! Track your food and calories.")
 
-def calculate_bmi(weight, height):
-    """Calculates BMI given weight and height."""
-    try:
-        height_m = height / 100
-        bmi = weight / (height_m ** 2)
-        return round(bmi, 2)
-    except ZeroDivisionError:
-        return "Invalid Input"
-    except Exception as e:  # Catch any other unexpected error
-        return f"Error: {e}"
+# Define the folder path
+folder_path = "Stored Data"
+if not os.path.exists(folder_path):
+    os.makedirs(folder_path)
+
+# Load food data from JSON
+try:
+    with open(os.path.join(folder_path, "food_data.json"), "r") as f:
+        food_data = json.load(f)
+except FileNotFoundError:
+    food_data = []
+
+today = datetime.date.today()
+formatted_today = today.strftime("%B %d, %Y")
+
+food_item = st.text_input("Enter food item:")
+calories = st.number_input("Enter calories:", min_value=0)
 
 
-st.title("BMI Tracker")
+if st.button("Log Food"):
+    if food_item and calories:
+        food_data.append({
+            "date": formatted_today,
+            "food": food_item,
+            "calories": calories
+        })
+
+        with open(os.path.join(folder_path, "food_data.json"), "w") as f:
+            json.dump(food_data, f, indent=4)
+
+        st.success(f"Logged {food_item} ({calories} calories) for {formatted_today}")
+    else:
+        st.warning("Please enter both food item and calories.")
 
 
-# Input fields
-weight = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
-height = st.number_input("Enter your height (cm):", min_value=0.0, step=0.1)
+# Display food logs
+if st.button("View Food Logs"):
+    st.write("\nYour Food Logs:")
+    if food_data:
+        df = pd.DataFrame(food_data)
+        st.table(df)
+    else:
+        st.write("No food data available.")
 
-if st.button("Calculate BMI"):
-    bmi = calculate_bmi(weight, height)
-    st.write(f"Your BMI is: {bmi}")
-
-    # Log the data in a dataframe
-    new_data = {"Date": pd.Timestamp.now().strftime("%Y-%m-%d"),
-                "Weight (kg)": weight,
-                "Height (cm)": height,
-                "BMI": bmi}
-
-    df = pd.read_csv("bmi_data.csv")
-    df = pd.concat([df, pd.DataFrame([new_data])], ignore_index=True)
-    df.to_csv("bmi_data.csv", index=False)
-    st.success("BMI logged successfully!")
-
-# Display existing logs
-if os.path.exists("bmi_data.csv"):
-    st.subheader("BMI History")
-    df = pd.read_csv("bmi_data.csv")
-    st.dataframe(df)
-else:
-    st.info("No BMI data available.")
+st.page_link("sleep/app.py", label="Go to the Sleep Tracker", icon=":material/bedtime:")
+st.page_link("bmi.py", label="Go to the BMI Tracker", icon=":material/scale:")
