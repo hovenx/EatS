@@ -42,7 +42,7 @@ if st.button("Calculate BMI"):
             "date": today,
             "weight": weight,
             "height": height,
-            "bmi": bmi_data,
+            "bmi": bmi,
             "category": bmi_category
         })
 
