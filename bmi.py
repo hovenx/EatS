@@ -19,17 +19,6 @@ try:
 except FileNotFoundError:
     bmi_data = []
 
-def get_bmi_category(bmi):
-    if bmi < 18.5:
-        return "Underweight"
-    elif 18.5 <= bmi < 25:
-        return "Normal weight"
-    elif 25 <= bmi < 30:
-        return "Overweight"
-    else:
-        return "Obese"
-
-
 weight = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
 height = st.number_input("Enter your height (m):", min_value=0.0, step=0.01)
 today = datetime.date.today().strftime("%Y-%m-%d")
@@ -38,8 +27,16 @@ today = datetime.date.today().strftime("%Y-%m-%d")
 if st.button("Calculate BMI"):
     if weight > 0 and height > 0:
         bmi = (weight / (height ** 2))
-        bmi_category = get_bmi_category(bmi)
-
+        
+        if bmi < 18.5:
+            bmi_category = "Underweight"
+        elif 18.5 <= bmi < 25:
+            bmi_category = "Normal weight"
+        elif 25 <= bmi < 30:
+            bmi_category = "Overweight"
+        else:
+            bmi_category = "Obese"
+       
         # Store data
         bmi_data.append({
             "date": today,
