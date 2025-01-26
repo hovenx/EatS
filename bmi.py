@@ -58,7 +58,6 @@ if st.button("Calculate BMI"):
         with open(("bmi_data"), "w") as f:
             json.dump(bmi_data, f, indent=4)
             
-        st.success(f"Logged {bmi_data} for {today}")
         st.write(f"Your BMI is: {bmi:.2f} ({bmi_category})")
         
         
@@ -80,6 +79,8 @@ if st.button("Calculate BMI"):
         else:
             st.write("Suggestions: Maintain a healthy lifestyle with balanced diet and regular exercise.")
 
+        st.success(f"Logged {bmi_data} for {today}")
+        
         # Display weight progress
         if len(bmi_data) > 1:
             df = pd.DataFrame(bmi_data)
