@@ -26,7 +26,7 @@ today = datetime.date.today().strftime("%Y-%m-%d")
 
 if st.button("Calculate BMI"):
     if weight > 0 and height > 0:
-        bmi = (weight / (height * 2))
+        bmi = (weight/(height * 2))
         
         if bmi < 18.5:
             bmi_category = "Underweight"
@@ -42,7 +42,7 @@ if st.button("Calculate BMI"):
             "date": today,
             "weight": weight,
             "height": height,
-            "bmi": bmi,
+            "bmi": bmi_data,
             "category": bmi_category
         })
 
@@ -51,7 +51,7 @@ if st.button("Calculate BMI"):
         with open(("bmi_data"), "w") as f:
             json.dump(bmi_data, f, indent=4)
             
-        st.write(f"Your BMI is: {bmi}: {bmi_category}")
+        st.write(f"Your BMI is: {bmi} ({bmi_category})")
         
         
         # BMI Suggestions
