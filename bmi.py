@@ -19,10 +19,6 @@ try:
 except FileNotFoundError:
     bmi_data = []
 
-def calculate_bmi(weight, height):
-    return (weight / (height ** 2))
-
-
 def get_bmi_category(bmi):
     if bmi < 18.5:
         return "Underweight"
@@ -41,7 +37,7 @@ today = datetime.date.today().strftime("%Y-%m-%d")
 
 if st.button("Calculate BMI"):
     if weight > 0 and height > 0:
-        bmi = calculate_bmi(weight, height)
+        bmi = (weight / (height ** 2))
         bmi_category = get_bmi_category(bmi)
 
         # Store data
