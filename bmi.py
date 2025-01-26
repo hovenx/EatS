@@ -20,7 +20,7 @@ except FileNotFoundError:
     bmi_data = []
 
 def calculate_bmi(weight_kg, height_m):
-    return weight_kg / (height_m ** 2)
+    return weight / (height ** 2)
 
 
 def get_bmi_category(bmi_data):
@@ -34,15 +34,15 @@ def get_bmi_category(bmi_data):
         return "Obese"
 
 
-weight_kg = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
-height_m = st.number_input("Enter your height (m):", min_value=0.0, step=0.01)
+weight = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
+height = st.number_input("Enter your height (m):", min_value=0.0, step=0.01)
 today = datetime.date.today().strftime("%Y-%m-%d")
 
 
 if st.button("Calculate BMI"):
-    if weight_kg > 0 and height_m > 0:
-        bmi = calculate_bmi(weight_kg, height_m)
-        bmi_category = get_bmi_category(bmi)
+    if weight > 0 and height > 0:
+        bmi = calculate_bmi(weight, height)
+        bmi_category = get_bmi_category(bmi_data)
 
         # Store data
         bmi_data.append({
