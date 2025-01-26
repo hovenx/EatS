@@ -79,7 +79,7 @@ if st.button("Calculate BMI"):
         else:
             st.write("Suggestions: Maintain a healthy lifestyle with balanced diet and regular exercise.")
 
-        st.success(f"Logged bmi for today")
+        st.success(f"Logged BMI for today")
         
         # Display weight progress
         if len(bmi_data) > 1:
