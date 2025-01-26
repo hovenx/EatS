@@ -40,7 +40,7 @@ today = datetime.date.today().strftime("%Y-%m-%d")
 
 
 if st.button("Calculate BMI"):
-    if weight > 0 and height > 0:
+    if weight_kg > 0 and height_m > 0:
         bmi = calculate_bmi(weight_kg, height_m)
         bmi_category = get_bmi_category(bmi)
 
