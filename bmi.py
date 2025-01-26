@@ -23,7 +23,7 @@ def calculate_bmi(weight_kg, height_m):
     return weight / (height ** 2)
 
 
-def get_bmi_category(bmi_):
+def get_bmi_category(bmi):
     if bmi < 18.5:
         return "Underweight"
     elif 18.5 <= bmi < 25:
