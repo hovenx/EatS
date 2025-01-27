@@ -1,31 +1,40 @@
+############################################
+#                                          #
+##      EatS: Food and Calorie Tracker    ##
+#                                          #
+############################################
+# Imports the important modules
 import streamlit as st
 import datetime
 import json
 import os
 import pandas as pd
 
+# Title Page
 st.title("EatS' Food and Calorie Tracker")
 st.subheader("Welcome to EatS! Track your food and calories.")
 
-# Define the folder path
+# Defines the folder path
 folder_path = "Stored Data"
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
-# Load food data from JSON
+# Loads the food data from JSON
 try:
     with open(os.path.join(folder_path, "food_data.json"), "r") as f:
         food_data = json.load(f)
 except FileNotFoundError:
     food_data = []
 
+# Sets the date and time to real-time
 today = datetime.date.today()
 formatted_today = today.strftime("%B %d, %Y")
 
+# Food and Calorie Input
 food_item = st.text_input("Enter food item:")
 calories = st.number_input("Enter calories:", min_value=0)
 
-
+# Condition to see if input is valid 
 if st.button("Log Food"):
     if food_item and calories:
         food_data.append({
@@ -51,5 +60,6 @@ if st.button("View Food Logs"):
     else:
         st.write("No food data available.")
 
+# Text Navigation to other pages
 st.page_link("sleep/app.py", label="Go to the Sleep Tracker", icon=":material/bedtime:")
 st.page_link("bmi.py", label="Go to the BMI Tracker", icon=":material/scale:")
