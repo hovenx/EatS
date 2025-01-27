@@ -1,8 +1,15 @@
+#########################################
+#                                       #
+##           EatS: HOMEPAGE            ##
+#                                       #
+#########################################
+# Imports the streamlit module
 import streamlit as st
 
+# Sets the page title (displays on browser tab)
 st.set_page_config(page_title="EatS", page_icon = ":material/fitness_center:")
 
-#--------- PAGE SETUP ---------
+# Page Setup - Sets each page directory
 about_us = st.Page(
     page = "aboutus.py",
     title = "About Us",
@@ -28,7 +35,7 @@ bmi_track = st.Page(
     icon=":material/scale:",
 )
 
-#--------- NAVIGATION SETUP ---------
+# Setting the navigation tab 
 pg = st.navigation(
     {
         "Information": [about_us],
