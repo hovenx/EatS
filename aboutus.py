@@ -1,14 +1,23 @@
+############################################
+#                                          #
+##      EatS: About Page (Home Page)      ##
+#                                          #
+############################################
+# Imports the important modules, including streamlit
 import streamlit as st
 import random
 
+# Title Page and Text Description
 st.title("EatS: Tracking Your Food and Sleep")
 st.header("Home")
 st.subheader("EatS is a website created by first year Computer Engineering Students from Cavite State University as a project. This website aims to contribute to a person's betterment of their health and fitness.")
 
+# Text Navigation
 st.page_link("sleep/app.py", label="Go to the Sleep Tracker", icon=":material/bedtime:")
 st.page_link("food/food.py", label="Go to the Food Tracker", icon=":material/restaurant:")
 st.page_link("bmi.py", label="Go to the BMI Tracker", icon=":material/scale:")
 
+# Random Quotes List
 quotes_list = ("Matulog ka nang maaga, ‘wag ka magpupuyat magagalit ako >:(",
 "How was your day? Kaya pa?... Kaya ‘yan!",
 "Uy nakita ko food intake mo. Kumain ka nang mabuti ha",
@@ -60,4 +69,5 @@ quotes_list = ("Matulog ka nang maaga, ‘wag ka magpupuyat magagalit ako >:(",
 "Are you hungry right now? How about we cook a very healthy meal while I hug you from the back :3",
 "Dinner at olive garden? I’ll pick you up by 8pm <33")
 
+# Displays the random chosen quote.
 st.caption(random.choice(quotes_list))
