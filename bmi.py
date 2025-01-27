@@ -1,9 +1,15 @@
+#########################################
+#                                       #
+##          EatS: BMI Tracker          ##
+#                                       #
+#########################################
+# Imports the important modules
 import math
 import streamlit as st
 import pandas as pd
 import os
 
-# Initialize the dataframe if it doesn't exist
+# Initializes the dataframe if it doesn't exist
 if not os.path.exists("bmi_data.csv"):
     df = pd.DataFrame(columns=["Date", "Weight (kg)", "Height (cm)", "BMI", "Classification", "Suggestion"])
     df.to_csv("bmi_data.csv", index=False)
@@ -29,12 +35,14 @@ def get_bmi_classification(bmi):
     else:
         return "Obese", "Consult a doctor or a registered dietitian to develop a weight loss plan. Consider a combination of diet, exercise, and potentially medication."
 
+# Displays the Page Title at the page itself
 st.title("BMI Tracker")
 
 # Input fields
 weight = st.number_input("Enter your weight (kg):", min_value=0.0, step=0.1)
 height = st.number_input("Enter your height (cm):", min_value=0.0, step=0.1)
 
+# Process - calculating and displaying the BMI output
 if st.button("Calculate BMI"):
     bmi = calculate_bmi(weight, height)
     st.write(f"Your BMI is: {bmi}")
@@ -44,7 +52,7 @@ if st.button("Calculate BMI"):
     st.write(f"Suggestion: {suggestion}")
 
 
-    # Log the data in a dataframe
+    # Log the data in the dataframe file
     new_data = {"Date": pd.Timestamp.now().strftime("%Y-%m-%d"),
                 "Weight (kg)": weight,
                 "Height (cm)": height,
