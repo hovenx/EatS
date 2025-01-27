@@ -81,7 +81,7 @@ if target_hours or target_minutes:  # Proceed if either target is entered
       # Create a line chart (if data exists)
       if f"{sleep_type.lower()}_hours" in df.columns and not df[f"{sleep_type.lower()}_hours"].isnull().all():
         st.markdown(f"## {sleep_type} Hours Over Time") 
-        st.line_chart(df, x='date', y=f"{sleep_type.lower()}_hours") 
+        st.line_chart(df, x=f"{sleep_type.lower()}_hours", y='date') 
     else:
       st.write("No sleep data available.")
   # Write sleep data to JSON file after the loop
