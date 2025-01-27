@@ -1,25 +1,32 @@
+######################################
+#                                    #
+##        EatS: Sleep Tracker       ##
+#                                    #
+######################################
+# Imports the modules
 import streamlit as st
 import datetime
 import json
 import os
 import pandas as pd
 
+# Page Title
 st.title("Sleep Tracker")
 st.subheader("Welcome to the EatS' Sleep Tracker. Here we'll help you fix your body clock for better health.")
 
-# Define the folder path
+# Defines the folder path
 folder_path = "Stored Data"
 if not os.path.exists(folder_path):
   os.makedirs(folder_path)
 
-# Load sleep data from JSON
+# Loads the sleep data from JSON
 try:
   with open(os.path.join(folder_path, "sleep_data.json"), "r") as f:
     sleep_data = json.load(f)
 except FileNotFoundError:
   sleep_data = []
 
-# Allow user to select sleep type (Nap or Night)
+# Allow user to select the sleep type (Nap or Night)
 sleep_type = st.radio("Select Sleep Type:", ("Nap", "Sleep"))
 
 # Get target sleep hours based on selected type
@@ -31,7 +38,7 @@ elif sleep_type == "Sleep":
   target_minutes = st.number_input("Enter your target night sleep minutes:", min_value=0, max_value=59, step=1, key="target_minutes_night_input")
 
 if target_hours or target_minutes:  # Proceed if either target is entered
-  for i in range(1):  # Collect data for two days
+  for i in range(1):  # Collects data for two days
     today = datetime.date.today()
     formatted_today = today.strftime("%B %d, %Y")
 
@@ -83,5 +90,6 @@ if target_hours or target_minutes:  # Proceed if either target is entered
 
   st.write("\nCome back tomorrow to track your sleep again.")
 
+# Text navigation to other pages
 st.page_link("food/food.py", label="Go to the Food Tracker", icon=":material/restaurant:")
 st.page_link("bmi.py", label="Go to the BMI Tracker", icon=":material/scale:")
