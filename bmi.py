@@ -53,7 +53,7 @@ if st.button("Calculate BMI"):
 
 
     # Log the data in the dataframe file
-    bmi_data = {"Date": pd.Timestamp.now().strftime("%Y-%m-%d"),
+    new_bmi_data = {"Date": pd.Timestamp.now().strftime("%Y-%m-%d"),
                 "Weight (kg)": weight,
                 "Height (cm)": height,
                 "BMI": bmi,
@@ -61,7 +61,7 @@ if st.button("Calculate BMI"):
                 "Suggestion": suggestion}
 
     df = pd.read_csv("bmi_data.csv")
-    df = pd.concat([df, pd.DataFrame([bmi_data])], ignore_index=True)
+    df = pd.concat([df, pd.DataFrame([new_bmi_data])], ignore_index=True)
     df.to_csv("bmi_data.csv", index=False)
     st.success("BMI logged successfully!")
 
